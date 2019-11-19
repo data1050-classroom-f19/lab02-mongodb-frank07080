@@ -24,6 +24,7 @@ def query1(minFare, maxFare):
     """
     docs = db.taxi.find(
         # TODO: implement me
+        {'fare_amount': {'$gte': minFare, '$lte': maxFare}}
     )
 
     result = [doc for doc in docs]
@@ -78,6 +79,12 @@ def query3():
     """
     docs = db.airbnb.aggregate(
         # TODO: implement me
+        [
+            {
+                '$group': 
+                    {'neighbourhood_group', total: {'$avg': 'price'}}}
+            {'$sort': {total: -1}}
+        ]
     )
 
     result = [doc for doc in docs]
