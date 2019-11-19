@@ -22,8 +22,19 @@ def query1(minFare, maxFare):
     Returns:
         An array of documents.
     """
-    docs = db.taxi.find(
-        {'fare_amount': {'$gte': minFare, '$lte': maxFare}}
+    ddocs = db.taxi.find(
+        {
+            'fare_amount': {
+                '$gte': minFare,
+                '$lte': maxFare
+            }
+        }, 
+        {
+            '_id': 0,
+            'pickup_longitude': 1,
+            'pickup_latitude': 1,
+            'fare_amount': 1
+        }
     )
 
     result = [doc for doc in docs]
