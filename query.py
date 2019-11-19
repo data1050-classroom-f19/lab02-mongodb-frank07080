@@ -111,7 +111,6 @@ def query4():
                                           {'$abs': {'$subtract': ['$pickup_latitude', '$dropoff_latitude']}}]
                                           }
                                  },
-                'average_manh_dis': {'$avg': '$abs'}
             }
         },
          {
